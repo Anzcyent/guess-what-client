@@ -12,7 +12,7 @@ import { play } from "../redux/actions/game";
 const InputArea = () => {
   const [data, setData] = useState({ guessNumber: null, bet: null });
   const dispatch = useDispatch();
-  const { access_token } = useSelector((state) => state.authReducer);
+  const { access_token, user } = useSelector((state) => state.authReducer);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,7 +24,7 @@ const InputArea = () => {
 
     if (data.guessNumber && data.bet) {
       dispatch(play(data, access_token));
-      dispatch(showResultCard(true));
+      if (+data.bet < user.coins) dispatch(showResultCard(true));
       dispatch(setDisableButton(true));
 
       setTimeout(() => dispatch(showResultCard(false)), 4000);

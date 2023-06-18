@@ -3,7 +3,8 @@ export const appConstants = {
   LOADING: "LOADING",
   RESULT_CARD: "RESULT_CARD",
   ACCOUNTING: "ACCOUNTING",
-  DISABLE_BUTTON: "DISABLE_BUTTON"
+  DISABLE_BUTTON: "DISABLE_BUTTON",
+  ERROR: "ERROR",
 };
 
 export const authConstants = {

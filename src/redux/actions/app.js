@@ -7,6 +7,10 @@ export const setEnteredNumber = (guessNumber) => (dispatch) => {
       payload: guessNumber,
     });
   } catch (err) {
+    dispatch({
+      type: appConstants.ERROR,
+      payload: err.response.data.message,
+    });
     throw new Error(err);
   }
 };
@@ -18,6 +22,10 @@ export const showResultCard = (isShowed) => (dispatch) => {
       payload: isShowed,
     });
   } catch (err) {
+    dispatch({
+      type: appConstants.ERROR,
+      payload: err.response.data.message,
+    });
     throw new Error(err);
   }
 };
@@ -29,6 +37,10 @@ export const showAccounting = (isShowed) => (dispatch) => {
       payload: isShowed,
     });
   } catch (err) {
+    dispatch({
+      type: appConstants.ERROR,
+      payload: err.response.data.message,
+    });
     throw new Error(err);
   }
 };
@@ -40,6 +52,10 @@ export const setDisableButton = (isDisabled) => (dispatch) => {
       payload: isDisabled,
     });
   } catch (err) {
+    dispatch({
+      type: appConstants.ERROR,
+      payload: err.response.data.message,
+    });
     throw new Error(err);
   }
 };

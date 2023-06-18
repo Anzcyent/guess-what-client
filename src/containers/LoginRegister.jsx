@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { login, register } from "../redux/actions/auth";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 import { MainButton } from "../components";
 
@@ -14,6 +15,8 @@ const LoginRegister = () => {
     password: "",
     confirmPassword: "",
   });
+
+  const { error } = useSelector((state) => state.appReducer);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -30,7 +33,9 @@ const LoginRegister = () => {
     e.preventDefault();
 
     if (!loginRender) {
-      dispatch(register(data, navigate));
+      if (data.password === data.confirmPassword) {
+        dispatch(register(data, navigate));
+      }
     } else {
       dispatch(login(data, navigate));
     }
@@ -42,6 +47,11 @@ const LoginRegister = () => {
     setData({ ...data, [name]: value });
   };
 
+  useEffect(() => {
+    if (error) notify(error);
+  }, [error]);
+
+  const notify = (message) => toast.error(message);
   return (
     <div
       className="w-full bg-tan p-5 grow flex__col-center overflow-hidden "
@@ -51,6 +61,7 @@ const LoginRegister = () => {
         onSubmit={handleSubmit}
         className={`w-3/4 ${animationClass} flex__col-center bg-tan rounded-xl h-3/4`}
       >
+        <ToastContainer />
         {!loginRender && (
           <input
             type="text"
@@ -69,7 +80,7 @@ const LoginRegister = () => {
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder={`Password ${!loginRender ? "(min 6)" : ""} `}
           className="px-3 border-0 outline-0 bg-gray text-white font-bold placeholder:font-normal placeholder:text-white md:placeholder:text-xl placeholder:text-sm h-10 my-5"
           name="password"
           onChange={handleChange}

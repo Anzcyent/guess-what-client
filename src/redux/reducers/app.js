@@ -6,6 +6,7 @@ const initialState = {
   showResultCard: false,
   showAccounting: false,
   disableButton: false,
+  error: null,
 };
 
 export default function appReducer(state = initialState, action) {
@@ -38,6 +39,12 @@ export default function appReducer(state = initialState, action) {
       return {
         ...state,
         disableButton: action.payload,
+      };
+
+    case appConstants.ERROR:
+      return {
+        ...state,
+        error: action.payload,
       };
     default:
       return state;

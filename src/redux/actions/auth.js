@@ -25,6 +25,10 @@ export const register = (data, navigate) => async (dispatch) => {
 
     navigate("/");
   } catch (err) {
+    dispatch({
+      type: appConstants.ERROR,
+      payload: err.response.data.message,
+    });
     throw new Error(err.response.data.message);
   }
 };
@@ -53,6 +57,10 @@ export const login = (data, navigate) => async (dispatch) => {
 
     navigate("/");
   } catch (err) {
+    dispatch({
+      type: appConstants.ERROR,
+      payload: err.response.data.message,
+    });
     throw new Error(err.response.data.message);
   }
 };

@@ -11,6 +11,10 @@ export const createGame = (token) => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
+    dispatch({
+      type: appConstants.ERROR,
+      payload: err.response.data.message,
+    });
     throw new Error(err.response.data.message);
   }
 };
@@ -33,6 +37,10 @@ export const play = (data, token) => async (dispatch) => {
       dispatch(showAccounting(true));
     }, 2000);
   } catch (err) {
+    dispatch({
+      type: appConstants.ERROR,
+      payload: err.response.data.message,
+    });
     throw new Error(err.response.data.message);
   }
 };
