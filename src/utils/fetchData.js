@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const getData = async (url, token) => {
-  const res = await axios.get(`http://localhost:5000${url}`, {
+  const res = await axios.get(`https://guess-what-server.onrender.com${url}`, {
     headers: { Authorization: `Bearer:${token}}` },
     withCredentials: true,
   });
@@ -10,7 +10,7 @@ export const getData = async (url, token) => {
 };
 
 export const postData = async (url, data, token) => {
-  const res = await axios.post(`http://localhost:5000${url}`, data, {
+  const res = await axios.post(`https://guess-what-server.onrender.com${url}`, data, {
     headers: { Authorization: `Bearer:${token}` },
     withCredentials: true,
   });
