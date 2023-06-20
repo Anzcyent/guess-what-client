@@ -19,7 +19,7 @@ const Navbar = () => {
           alt="logo"
           className="sm:w-[80px] w-[50px]"
         />
-        <span className="font-bold text-white sm:text-base text-sm">
+        <span className="font-bold text-white text-base hidden sm:block">
           Guess What
         </span>
       </div>
