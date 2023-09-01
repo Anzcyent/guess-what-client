@@ -80,13 +80,11 @@ const LoginRegister = () => {
         />
         <input
           type="password"
-          placeholder={`Password ${!loginRender ? "(min 6)" : ""} `}
+          placeholder="Password"
           className="px-3 border-0 outline-0 bg-gray text-white font-bold placeholder:font-normal placeholder:text-white md:placeholder:text-xl placeholder:text-sm h-10 my-5"
           name="password"
           onChange={handleChange}
         />
-
-        {!loginRender && <small className="text-tomato font-bold">Should be min 6 characters</small>} 
 
         {!loginRender && (
           <input
@@ -96,6 +94,12 @@ const LoginRegister = () => {
             name="confirmPassword"
             onChange={handleChange}
           />
+        )}
+
+        {!loginRender && (
+          <small className="text-tomato font-bold">
+            Password should be min 6 characters
+          </small>
         )}
 
         <span className="text-xs my-3">
