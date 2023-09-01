@@ -86,7 +86,7 @@ const LoginRegister = () => {
           onChange={handleChange}
         />
 
-        {!loginRender && <small className="bg-tomato">Should be min 6 characters</small>} 
+        {!loginRender && <small className="text-tomato font-bold">Should be min 6 characters</small>} 
 
         {!loginRender && (
           <input
